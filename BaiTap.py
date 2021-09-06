@@ -53,7 +53,7 @@ import time
 
 
 date_xsmas=datetime(2021, 12, 25, 00, 00, 00, 000000)
-while now<date_xsmas:
+while True:
     now = datetime.now()
     result_time=date_xsmas-now
     time.sleep(5)
