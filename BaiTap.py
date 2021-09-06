@@ -61,21 +61,38 @@ while True:
 
 
 ## Bài: Unique value Dictionary
+
+print("VD1")
 unique_value_dict= dict(Trang=38, Thu=38, Ngoc=27, Thanh=26, Yen=25, Hang=22, Thuy=22)
+
+dict2=[{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
 list_t=[]
 for i in unique_value_dict:
     if list_t.count(unique_value_dict[i])==0:
         list_t.append(unique_value_dict[i])
 list_t.sort()        
-print(list_t)
+print("Unique value Dictionary VD1 is: ",list_t)
+
+print("VD2")
+list_t1=[]
+for j in range(0, len(dict2)):
+    a=list(dict2[j].values())
+    if a in list_t1:
+      continue
+    else:
+      list_t1.append(a)
+      
+print("Unique value Dictionary VD2 is: ",list_t1)
+
+
 
 ## Bài: Find Pair
 list_a = [3, 6, 7, 9, 11, 12]
 n_sum=18
 list_str=[]
-for i in range(len(list_a)-1) :
-    a=list_a[i]
-    for j in range(i+1,len(list_a)):
+for i in range(len(list_a)-1) : ##range khoảng for trong 1 list range(2, 6) - chỉ lấy từ 2-5
+    a=list_a[i] ## khai báo a = từng phần tử trong list: a= 3,6,7,9...
+    for j in range(i+1,len(list_a)): ##i+ 1 vì ko thể a= b= 3 cộng 2 lần với nhau
         b=list_a[j]
         if a+b == n_sum:
             c=a,b
