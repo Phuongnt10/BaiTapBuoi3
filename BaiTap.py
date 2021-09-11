@@ -29,7 +29,7 @@ for i in range(n, 0, -1): ## bắt đầu từ n nhảy dần về 0 bước nh�
        print(k,(i) * '*')
 
 
-##Bài Đếm số
+'''##Bài Đếm số
 my_list = [10, 21, 21, 40, 40, 52, 52, 1, 1, 2, 2, 2, 2, 11, 11, 11, 11, 25, 24, 24, 60, 40]
 number_list={
 10:my_list.count(10),
@@ -97,4 +97,4 @@ for i in range(len(list_a)-1) : ##range khoảng for trong 1 list range(2, 6) - 
         if a+b == n_sum:
             c=a,b
             list_str.append(c)
-print(list_str)
+print(list_str)'''
