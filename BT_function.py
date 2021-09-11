@@ -1,4 +1,4 @@
-A = [7, 8, 9, 2, 10, 9, 9, 9, 9, 4, 5, 6, 1, 5, 6, 7, 8, 6, 1, 10] 
+A = [7, 8, 9, 2, 10, 9, 9, 9, 9, 4, 5, 6, 1, 5, 6, 7, 8, 6, 1,10] 
 def do_mean():
     x=len(A)
     y=sum(A)
@@ -11,7 +11,7 @@ def do_median():
         result=(lst_sort[x] + lst_sort [x-1])/2
         print("median(A):",result,end = ' ')
     else:
-        print(lst_sort[x]) 
+        print("median(A):",lst_sort[x],end = ' ') 
 def do_mode():
     b = []
     c= []
@@ -24,8 +24,7 @@ def do_mode():
     print('mode(A):',c[0])
 do_mean()
 do_median()
-do_mode()
-
+do_mode() 
 
 
 print("Cách 1 dùng nhiều hàm build in")
