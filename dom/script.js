@@ -1,18 +1,4 @@
-function binhPhuong(number){
-  
-    return number*number
-}
 
-function dienTichHT(r)
-{
-    if (r<=0)
-    {
-            return "đầu vào sai rồi"
-    }else{
-        return Math.PI* r*r
-    }
-   
-}
 
 function changeColor()
 {
@@ -35,10 +21,9 @@ function copyContent(paragraph1, paragraph2)
 }
 function changeFontSize(x)
 {
-   for(i=0;i<3;i++)
-   {
-       return document.getElementsByTagName('p')[i].style.fontSize =x+'px'
-   } 
+    return document.getElementsByTagName('p')[0].style.fontSize =x+'px'
+    return document.getElementsByTagName('p')[1].style.fontSize =x+'px'
+    return document.getElementsByTagName('p')[2].style.fontSize =x+'px'
 }
 function increaseFontSize(paragraph)
 {
