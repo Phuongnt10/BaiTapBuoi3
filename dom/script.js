@@ -21,9 +21,9 @@ function copyContent(paragraph1, paragraph2)
 }
 function changeFontSize(x)
 {
-    return document.getElementsByTagName('p')[0].style.fontSize =x+'px'
-    return document.getElementsByTagName('p')[1].style.fontSize =x+'px'
-    return document.getElementsByTagName('p')[2].style.fontSize =x+'px'
+     document.getElementsByTagName('p')[0].style.fontSize =x+'px'
+     document.getElementsByTagName('p')[1].style.fontSize =x+'px'
+     document.getElementsByTagName('p')[2].style.fontSize =x+'px'
 }
 function increaseFontSize(paragraph)
 {
