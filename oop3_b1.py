@@ -1,7 +1,16 @@
+class Customer():
+    def __init__(self,name,date_of_birth,email,phone):
+        self.name=name
+        self.date_of_birth=date_of_birth
+        self.email=email
+        self.phone=phone
+    def get_info(self):
+        print(f"Name: {self.name}, Date_of_birth: {self.date_of_birth}, Email: {self.email}, Phone: {self.phone}")    
+
 class BankAccount:
-    def __init__(self, account_number, account_name, balance=0):
+    def __init__(self, account_number, owner, balance=0):
         self._account_number = account_number
-        self._account_name = account_name
+        self._owner = owner
         self.balance = balance
 
     @property
@@ -9,8 +18,8 @@ class BankAccount:
         return self._account_number
 
     @property
-    def account_name(self):
-        return self._account_name
+    def owner(self):
+        return self._owner
 
     @property
     def balance(self):
@@ -24,13 +33,14 @@ class BankAccount:
             raise ValueError("Số dư phải lớn hơn 0")
 
     def display(self):
-        print(f"{self.account_number}, {self.account_name},{self.balance}")
+        print(f"Số tài khoản: {self.account_number}, Họ và Tên: {self.owner.name},Ngày tháng năm sinh: {self.owner.date_of_birth},Số điện thoại: {self.owner.phone},Email: {self.owner.email},{self.balance}")
 
 class SavingAccount(BankAccount):
     monthly_interest_rate=0.005
     def calculate_interest(self):
-        print (self.balance*SavingAccount.monthly_interest_rate)
-
-sav=SavingAccount('1','phuongnt',5000000)
+        print ("SỐ tiền tiết kiệm: ",self.balance*SavingAccount.monthly_interest_rate)
+        
+cus= Customer('Phương NT','1-1-20000','phuongnt@gmail.com','0456543452')
+sav=SavingAccount('17897',cus,5000000)
 sav.display()
 sav.calculate_interest()
