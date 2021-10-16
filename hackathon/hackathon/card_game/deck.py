@@ -9,6 +9,7 @@ class Deck:
 
     def build(self):
         '''Tạo bộ bài'''
+        print("Tạo bộ bài nào")
         self.cards=[]
         for i in Deck.ranks:
             for j in Deck.suits:
@@ -18,15 +19,15 @@ class Deck:
 
     def shuffle_card(self):
         '''Trộn bài'''
+        print("Xem bài trộn")
         random.shuffle(self.cards)
+        for i in self.cards:
+            print(i)
 
     def deal_card(self, index_card):
         '''Rút một lá bài từ bộ bài'''
         return self.cards[index_card]
 
-de=Deck()
-de.build()
-a= de.shuffle_card()
-print (a)
-b= de.deal_card(0)
-print(b)
+##de=Deck()
+##de.build()
+##de.shuffle_card()

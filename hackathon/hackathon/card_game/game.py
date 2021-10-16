@@ -24,11 +24,11 @@ class Game:
         print("1.Danh sách người chơi: "+  str(len(self.ds_nguoichoi)))
         print("2.Thêm người chơi mới")
         print("3.Loại người chơi")
-        print("4.Chia bài")
-        print("5.Lật bài")
-        print("6.Xem lại game vừa chơi")
-        print("7.Xem lịch sử chơi hôm nay")
-        print("8.Tốc biến")
+        ##print("4.Chia bài")
+        ##print("5.Lật bài")
+        ##print("6.Xem lại game vừa chơi")
+        ##print("7.Xem lịch sử chơi hôm nay")
+        ##print("8.Tốc biến")
 
     def list_players(self):
         '''danh sách ng chơi'''
@@ -59,11 +59,11 @@ class Game:
         '''Lật bài tất cả người chơi, thông báo người chiến thắng'''
         pass
 
-ga=Game()
-ga.setup()
-ga.guide()
-ga.list_players()
-ga.add_player()
-ga.list_players()
-ga.remove_player()
-ga.list_players()
+##ga=Game()
+##ga.setup()
+##ga.guide()
+##ga.list_players()
+##ga.add_player()
+##ga.list_players()
+##ga.remove_player()
+##ga.list_players()

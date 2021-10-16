@@ -6,18 +6,16 @@ def main():  # khó
     game.guide()
     chon = int(input())
 
-    while chon != 8 :
+    while True :
         if(chon==1):
             game.list_players()
         if(chon==2):
             game.add_player()
         if(chon==3):
-            game.remove_player()
-        if(chon==4):
-            game.deal_card()
+            game.remove_player() 
         game.guide()
         chon = int(input())
-    print("END GAME")
+    print("Dừng")
 
 if __name__ == '__main__':
     main()

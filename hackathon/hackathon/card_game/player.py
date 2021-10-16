@@ -18,9 +18,6 @@ class Player:
         for i in self.cards:
             diem+=i.rank
         return diem % 10    
-
-
-
     @property
     def biggest_card(self):
         '''
