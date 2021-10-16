@@ -16,7 +16,7 @@ class Game:
         for i in range(soluong):
             print("Tên người chơi thứ " + str(i+1))
             nguoichoi = input()
-            self.ds_nguoichoi.append(Player(nguoichoi))
+            self.ds_nguoichoi.append(nguoichoi)
            
 
     def guide(self):
@@ -40,7 +40,7 @@ class Game:
         '''Thêm người chơi mới'''
         print("Nhập người chơi mới: ")
         nguoichoi_moi=input()
-        self.ds_nguoichoi.append(Player(nguoichoi_moi))
+        self.ds_nguoichoi.append(nguoichoi_moi)
 
     def remove_player(self):
         '''
