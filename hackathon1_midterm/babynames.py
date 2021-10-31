@@ -70,4 +70,4 @@ def main():
   
 if __name__ == '__main__':
   main()
-  extract_names('baby2008.html')
+  ##extract_names('baby2008.html')
