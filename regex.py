@@ -1,5 +1,5 @@
 import re
-list_resutl=[]
+# list_resutl=[]
 t= open('animal_code.google.com',encoding='UTF-8')
 tf=t.read()
 find_add=re.findall("GET (.*\.jpg).*/(.\..\..\..)",tf)

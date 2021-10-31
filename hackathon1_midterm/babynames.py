@@ -36,8 +36,19 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  pass
-
+  year ='Popularity in (\\d+)'
+  name='tr align="right"><td>(\d+)</td><td>(\w+)</td><td>(\w+)'  
+  list_result=[]
+  with open(filename,'r') as file:
+        files= file.readlines()
+        for i in files:
+          for j in re.findall(year,i):
+                list_result.append(j)
+                
+          for n in re.findall(name,i):
+                list_result.append(f'{(n)[1]}  {(n)[0]}')
+                list_result.append(f'{(n)[2]}  {(n)[0]}')
+        return (sorted(list_result,reverse=False))    
 
 def main():
   # Chương trình này có thể nhận đối số đầu vào là một hoặc nhiều tên file
@@ -59,3 +70,4 @@ def main():
   
 if __name__ == '__main__':
   main()
+  extract_names('baby2008.html')
