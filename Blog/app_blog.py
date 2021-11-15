@@ -86,13 +86,17 @@ def resignation():
 
 @app.route('/resignation', methods=['POST'])    
 def sent_resi():
+    from pathlib import Path
+    from docx import Document
+    from docx.shared import Cm
     fullname = request.form["fullname"]
     reason = request.form["reason"]
     document = Document()
-    document.add_heading('Document Title', 0)
-    document.add_paragraph('A plain paragraph having some ')
-    document.save('satic/demo.docx')
-    return redirect('/resignation',code=302)
+    document.add_paragraph(fullname)
+    document.add_paragraph(reason)
+    file='demo.docx'
+    document.save(str(Path(__file__).parent.absolute())+'/static/demo.docx')
+    return render_template('resignation-letter.html', file=file)
 
 # @app.route('/resignation', methods=['POST'])    
 # def sent_resi():
