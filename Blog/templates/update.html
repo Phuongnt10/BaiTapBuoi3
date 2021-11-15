@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <h1>Blogs Page</h1>
+    <ul>
+        <li><a href="/">Blogs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/resignation">Resignation Letter</a></li>
+    </ul>
+    <b><label>{{ r1 }}</label></b> <br>
+
+    <form action="/blog/{{ r0 }}" method="POST">
+        <label>Title</label> <br>
+        <input type="text" name="title" value="{{ r1 }}"><br>
+        <label>Content</label><br>
+        <textarea type="text" name="content"  cols="30" rows="10">{{ r2 }}</textarea><br>
+        <button type="submit">Save post</button>
+    </form>
+
+   
+</body>
+</html>
