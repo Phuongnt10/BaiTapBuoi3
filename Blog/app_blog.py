@@ -33,7 +33,7 @@ cnx = connect(**config)
 @app.route("/")
 def home():
     cur= cnx.cursor()
-    sql="Select * from blog_uer"
+    sql="Select * from blog_uer order by date DESC "
     cur.execute(sql)
     return render_template("home.html", cur=cur)
 
