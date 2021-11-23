@@ -1,12 +1,17 @@
-from flask import Flask, render_template, Response, request, redirect
+from flask import Flask, render_template, Response, request, redirect, flash
 from pymysql import connect, cursors, Error
 from datetime import datetime
 from docx import Document
 from docx.shared import Inches
 import pandas as pd 
 from sqlalchemy import create_engine
+from pathlib import Path
+from docx import Document
+from docx.shared import Cm
+
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Jinja
 # blog = {
@@ -45,11 +50,15 @@ def new_blog():
     title = request.form["title"]
     content = request.form["content"]
     cur= cnx.cursor()
-    sql="INSERT into blog_uer (title,contain,date) VALUES (%s, %s, %s)"
-    value=(title,content,datetime.now())
-    cur.execute(sql,value)
-    cnx.commit()
-    return redirect("/", code=302)
+    if title and content:
+        sql="INSERT into blog_uer (title,contain,date) VALUES (%s, %s, %s)"
+        value=(title,content,datetime.now())
+        cur.execute(sql,value)
+        cnx.commit()
+        flash("Post created!")    
+    else:
+        flash("Title and content cannot be empty")    
+    return redirect("/" ) 
 
 @app.route('/blog/<id>',methods=["GET"])
 def detail(id):
@@ -69,10 +78,24 @@ def update_blog(id):
     title = request.form["title"]
     content = request.form["content"]
     cur= cnx.cursor()
-    sql=f"UPDATE blog_uer SET title='{title}', contain= '{content}' where id= {id}"
-    cur.execute(sql)
-    cnx.commit()
-    return redirect("/", code=302)   
+    if title and content:
+        sql=f"UPDATE blog_uer SET title='{title}', contain= '{content}' where id= {id}"
+        cur.execute(sql)
+        cnx.commit()
+        return redirect("/", code=302)  
+    else:
+        flash("Title and content cannot be empty")     
+    return redirect(request.url)  
+
+
+@app.route("/delete/<id>", methods=["POST"])
+def delete_blog(id):
+        cur= cnx.cursor()
+        sql=f"delete from blog_uer where id= {id}"
+        cur.execute(sql)
+        cnx.commit()
+        flash("Delete successs !")
+        return redirect("/", code=302)  
 
 
 @app.route("/about")
@@ -82,21 +105,31 @@ def about():
 
 @app.route("/resignation")
 def resignation():
-    return render_template("resignation-letter.html")         
+    return render_template("resignation-letter.html")       
+
 
 @app.route('/resignation', methods=['POST'])    
 def sent_resi():
-    from pathlib import Path
-    from docx import Document
-    from docx.shared import Cm
-    fullname = request.form["fullname"]
-    reason = request.form["reason"]
-    document = Document()
-    document.add_paragraph(fullname)
-    document.add_paragraph(reason)
-    file='demo.docx'
-    document.save(str(Path(__file__).parent.absolute())+'/static/demo.docx')
-    return render_template('resignation-letter.html', file=file)
+    
+    is_save = False
+    fullname = request.form.get("fullname")
+    reason = request.form.get("reason")
+    if fullname and reason:
+        document = Document()
+        document.add_heading("Resignation Letter", level=0)
+        document.add_paragraph(fullname)
+        document.add_paragraph(reason)
+        file='demo.docx'
+        document.save(str(Path(__file__).parent.absolute())+'/static/demo.docx')
+        is_save = True
+        return render_template('resignation-letter.html', file=file,is_save=is_save)
+
+        
+    else:
+        flash("Fullname and reason cannot be empty")
+        return redirect('/resignation',code=302)
+
+
 
 # @app.route('/resignation', methods=['POST'])    
 # def sent_resi():

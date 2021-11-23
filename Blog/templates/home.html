@@ -19,12 +19,28 @@
         <input type="text" name="title"><br>
         <label>Content</label><br>
         <textarea type="text" name="content" id="" cols="30" rows="10"></textarea><br>
-        <button type="submit">Add new post</button>
-    </form>
+        <!-- {% with messages = get_flashed_messages() %} {% if messages %}
+        <div>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %} {% endwith %} -->
+        <button type="submit">Add new post</button>  
+    </form>   
+
     
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div>
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    {% for i in cur: %}
 
     <h2> All POST</h2>
-    {% for i in cur: %}
         <p>Post at:   {{ i[3] }}
         
         <div>
@@ -32,7 +48,14 @@
             <h4>{{ i[2] }}</h4>
             <a href="/blog/{{ i[0] }}">Edit this post</a>
         </div>
+        <br>
+        <form  action="/delete/{{ i[0]}}" method="POST" >
+            <button>Delete</button>
+     
+            
+        </form>
     {% endfor %} 
     </p>
+
 </body>
 </html>

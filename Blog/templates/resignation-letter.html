@@ -22,8 +22,21 @@
         <label>Reason</label><br>
         <textarea type="text" name="reason" id="" cols="30" rows="10"></textarea><br>
         <button type="submit">Create file</button><br>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <div>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
     </form><br>
-        <a href="static/{{ file }}">Download here</a>
+        <!-- <a href="static/{{ file }}">Download here</a> -->
+
+
+        {% if is_save %}
+            <p>File created! Click on the link to download the file and send it to your boss right away :) <a href="static/{{ file }}" download="static/{{ file }}">Download</a></p>
+        {% endif %}
+    
   
 </body>
 </html>

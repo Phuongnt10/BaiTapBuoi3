@@ -21,6 +21,13 @@
         <label>Content</label><br>
         <textarea type="text" name="content"  cols="30" rows="10">{{ r2 }}</textarea><br>
         <button type="submit">Save post</button>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <div>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %} {% endwith %}
     </form>
 
    
