@@ -1,3 +1,6 @@
+import sys
+
+
 def helper(filename):
   contents = ""
   with open(filename, 'r') as file_again:
@@ -40,7 +43,7 @@ def print_top(filename):
           break;
   for i in range(len(list2)):
     print(list2[i]+ " " +str(list1[i]))
-print_top('alice.docx')    
+# print_top('alice.docx')    
 
 
 """Wordcount exercise
@@ -66,16 +69,6 @@ get_words() và get_top_words().
 
 """
 
-import sys
-
-# +++your code here+++
-def get_words(filename):
-  pass
-
-def get_top_words(filename):
-  pass
-
-###
 
 # This basic command line argument parsing code is provided and
 # calls the get_words() and get_top_words() functions which you must define.
@@ -88,9 +81,9 @@ def main():
   filename = sys.argv[2]
   ans = []
   if option == '--count':
-    ans = get_words(filename)
+    ans = print_words(filename)
   elif option == '--topcount':
-    ans = get_top_words(filename)
+    ans = print_top(filename)
   else:
     print('unknown option: ' + option)
     sys.exit(1)

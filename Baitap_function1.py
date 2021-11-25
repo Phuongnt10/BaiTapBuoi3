@@ -1,12 +1,12 @@
-print("Bài 1 đảo từ")
-def handle_str():
-    org_str = 'tHE fOX iS cOMING fOR tHE cHICKEN'
-    a= org_str.split()
-    b=a[::-1]
-    c=' '.join(b)
-    print("Chuỗi gốc",org_str)
-    print("Chuỗi đã xử lý",c.swapcase())
-handle_str()    
+# print("Bài 1 đảo từ")
+# def handle_str():
+#     org_str = 'tHE fOX iS cOMING fOR tHE cHICKEN'
+#     a= org_str.split()
+#     b=a[::-1]
+#     c=' '.join(b)
+#     print("Chuỗi gốc",org_str)
+#     print("Chuỗi đã xử lý",c.swapcase())
+# handle_str()    
 
 print("Bài 2 cách 1")
 def sort_diem():
@@ -21,7 +21,9 @@ sort_diem()
 
 
 print("Bài 2 cách 2")
-def sort_diem1():
-    list_of_tuples = ([(1, 2, 5), (9, 1, 2), (6, 4, 4), (3, 2, 3), (10, 2, 1)]) 
-    print(sorted(list_of_tuples, key = operator.itemgetter(2)))
-sort_diem1()    
+def sort_list(elem):
+    return elem[2]
+ls= [(1, 2, 5), (9, 1, 2), (6, 4, 4), (3, 2, 3), (10, 2, 1)]
+sort_list_last = sorted(ls, key=sort_list)
+
+print('Sắp xếp điểm thi:', sort_list_last)    
