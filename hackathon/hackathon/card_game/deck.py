@@ -28,6 +28,6 @@ class Deck:
         '''Rút một lá bài từ bộ bài'''
         return self.cards[index_card]
 
-##de=Deck()
-##de.build()
-##de.shuffle_card()
+# de=Deck()
+# de.build()
+# de.shuffle_card()

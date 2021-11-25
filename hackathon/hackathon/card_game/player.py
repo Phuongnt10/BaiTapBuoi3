@@ -1,3 +1,4 @@
+from card import Card
 class Player:
     '''
     Class đại diện cho mỗi người chơi
@@ -24,14 +25,28 @@ class Player:
         Tìm lá bài lớn nhất
         Trong trường hợp điểm bằng nhau, sẽ so sánh lá bài lớn nhất để tìm ra người chiến thắng
         '''
-        pass
+        return max(self.cards)
 
-    def add_card(self):
+    def add_card(self,card):
         '''Thêm một lá bài vào bộ (rút từ bộ bài)'''
-        pass
+        self.cards.append(card)
 
     def remove_card(self):
         '''Reset bộ bài khi chơi game mới'''
+        self.cards.clear()
 
     def flip_card(self):
         '''Lật bài, hiển thị các lá bài'''
+        return " ".join([str(c) for c in self.cards])
+    def __gt__(self,other):
+        '''Player có lá bài lớn nhất'''
+        if self.point > other.point:
+            return True
+        if self.point == other.point:
+            if self.biggest_card > other.biggest_card:
+                return True
+            else:
+                return False
+        return False    
+
+
