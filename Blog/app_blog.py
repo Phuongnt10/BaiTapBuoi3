@@ -38,7 +38,7 @@ cnx = connect(**config)
 @app.route("/")
 def home():
     cur= cnx.cursor()
-    sql="Select * from blog_uer order by date DESC "
+    sql="Select * from blog_uer1 order by date DESC "
     cur.execute(sql)
     return render_template("home.html", cur=cur)
 
@@ -51,7 +51,7 @@ def new_blog():
     content = request.form["content"]
     cur= cnx.cursor()
     if title and content:
-        sql="INSERT into blog_uer (title,contain,date) VALUES (%s, %s, %s)"
+        sql="INSERT into blog_uer1 (title,contain,date) VALUES (%s, %s, %s)"
         value=(title,content,datetime.now())
         cur.execute(sql,value)
         cnx.commit()
@@ -64,7 +64,7 @@ def new_blog():
 def detail(id):
  
     cur= cnx.cursor()
-    sql="select * from blog_uer where id="+str(id)
+    sql="select * from blog_uer1 where id="+str(id)
     cur.execute(sql)
     for i in cur:
         r1 = i[1] 
@@ -79,7 +79,7 @@ def update_blog(id):
     content = request.form["content"]
     cur= cnx.cursor()
     if title and content:
-        sql=f"UPDATE blog_uer SET title='{title}', contain= '{content}' where id= {id}"
+        sql=f"UPDATE blog_uer1 SET title='{title}', contain= '{content}' where id= {id}"
         cur.execute(sql)
         cnx.commit()
         return redirect("/", code=302)  
@@ -91,7 +91,7 @@ def update_blog(id):
 @app.route("/delete/<id>", methods=["POST"])
 def delete_blog(id):
         cur= cnx.cursor()
-        sql=f"delete from blog_uer where id= {id}"
+        sql=f"delete from blog_uer1 where id= {id}"
         cur.execute(sql)
         cnx.commit()
         flash("Delete successs !")
@@ -149,7 +149,7 @@ def sent_resi():
 
 # def load_excel():
 #     cur= cnx.cursor()
-#     df = pd.read_sql('SELECT * FROM blog_uer', cur)
+#     df = pd.read_sql('SELECT * FROM blog_uer1', cur)
 #     df.to_excel('user.xlsx', sheet_name='products', index=False)
 
 if __name__ == "__main__":

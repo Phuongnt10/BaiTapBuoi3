@@ -39,7 +39,3 @@ class Card:
                 return False
         return False
 
-card1 = Card(7,'♠')
-card2 = Card(4,'♥')
-card3 = Card(9,'♣')
-print(max(card1,card2,card3))

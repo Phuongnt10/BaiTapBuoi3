@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `blog_uer`
 --
 
-CREATE TABLE `blog_uer` (
+CREATE TABLE `blog_uer1` (
   `id` int(5) NOT NULL,
   `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `contain` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `blog_uer` (
 -- Dumping data for table `blog_uer`
 --
 
-INSERT INTO `blog_uer` (`id`, `title`, `contain`, `date`) VALUES
+INSERT INTO `blog_uer1` (`id`, `title`, `contain`, `date`) VALUES
 (45, 'Phuongnt bài 112', 'Hello word12', '2021-11-13 07:40:18'),
 (46, 'Phuongnt bài 2', '2345678', '2021-11-13 09:48:40'),
 (47, 'Phuongnt bài 3', '2345678', '2021-11-13 09:48:50'),

@@ -8,7 +8,7 @@ class Player:
 
     def __init__(self,name):  # dễ
         self.name=name
-        self.cards=[]
+        self.card=[]
     def __str__(self):
         return self.name    
 
@@ -16,7 +16,7 @@ class Player:
     def point(self):  # trung bình
         '''Tính điểm cho bộ bài'''
         diem=0
-        for i in self.cards:
+        for i in self.card:
             diem+=i.rank
         return diem % 10    
     @property
@@ -25,19 +25,21 @@ class Player:
         Tìm lá bài lớn nhất
         Trong trường hợp điểm bằng nhau, sẽ so sánh lá bài lớn nhất để tìm ra người chiến thắng
         '''
-        return max(self.cards)
+        return max(self.card)
 
     def add_card(self,card):
         '''Thêm một lá bài vào bộ (rút từ bộ bài)'''
-        self.cards.append(card)
+        self.card.append(card)
 
     def remove_card(self):
         '''Reset bộ bài khi chơi game mới'''
-        self.cards.clear()
+        self.card.clear()
 
     def flip_card(self):
         '''Lật bài, hiển thị các lá bài'''
-        return " ".join([str(c) for c in self.cards])
+        for i in self.card:
+            print(i)
+            
     def __gt__(self,other):
         '''Player có lá bài lớn nhất'''
         if self.point > other.point:
@@ -48,5 +50,10 @@ class Player:
             else:
                 return False
         return False    
-
+        
+    def ghep_card(self):
+         chuoi=""
+         for i in self.card:
+           chuoi=i.__str__()+chuoi
+         return chuoi
 
