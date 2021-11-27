@@ -17,15 +17,21 @@ class Player:
         '''Tính điểm cho bộ bài'''
         diem=0
         for i in self.card:
-            diem+=i.rank
+            diem+= i.rank
         return diem % 10    
+         
     @property
     def biggest_card(self):
         '''
         Tìm lá bài lớn nhất
         Trong trường hợp điểm bằng nhau, sẽ so sánh lá bài lớn nhất để tìm ra người chiến thắng
         '''
-        return max(self.card)
+        max_card = self.card[0]
+        for card in self.card :
+            if card > max_card : 
+                max_card = card
+        return max_card
+        # return max(self.card)
 
     def add_card(self,card):
         '''Thêm một lá bài vào bộ (rút từ bộ bài)'''
@@ -39,21 +45,5 @@ class Player:
         '''Lật bài, hiển thị các lá bài'''
         for i in self.card:
             print(i)
-            
-    def __gt__(self,other):
-        '''Player có lá bài lớn nhất'''
-        if self.point > other.point:
-            return True
-        if self.point == other.point:
-            if self.biggest_card > other.biggest_card:
-                return True
-            else:
-                return False
-        return False    
-        
-    def ghep_card(self):
-         chuoi=""
-         for i in self.card:
-           chuoi=i.__str__()+chuoi
-         return chuoi
+
 

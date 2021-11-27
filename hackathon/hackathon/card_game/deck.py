@@ -14,16 +14,13 @@ class Deck:
         for i in Deck.ranks:
             for j in Deck.suits:
                 self.cards.append(Card(i,j))
-        # for i in self.cards:
-        #     print(i)    
+          
 
     def shuffle_card(self):
         '''Trộn bài'''
-        # print("Xem bài trộn")
+    
         random.shuffle(self.cards)
-        # for i in self.cards:
-        #     print(i)
-
+    
     def deal_card(self):
         '''Rút một lá bài từ bộ bài'''
         return self.cards.pop(0)

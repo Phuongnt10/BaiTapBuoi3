@@ -4,7 +4,7 @@ class Card:
 
     Mỗi lá bài bao gồm rank ('A', 2, 3, 4, 5, 6, 7, 8, 9) và suit ('♠', '♣', '♦', '♥')
     '''
-
+ 
     def __init__(self, rank, suit):
         self._rank = rank
         self._suit = suit

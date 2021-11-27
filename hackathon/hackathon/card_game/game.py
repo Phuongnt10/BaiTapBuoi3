@@ -1,6 +1,7 @@
 from deck import Deck
 from player import Player
 import os
+import db
 class Game:
     '''
     Class chứa các chức năng chính của game
@@ -19,7 +20,7 @@ class Game:
         while True: 
             try:
                 sl_nguoichoi = int(input())
-                if sl_nguoichoi >=2 and sl_nguoichoi <=5:
+                if sl_nguoichoi >=2 and sl_nguoichoi <=12:
                     break
                 else:
                     print("Số lượng người chơi tối thiểu là 2 tối đa là 12")
@@ -73,7 +74,7 @@ class Game:
         
         if len(self.ds_nguoichoi)>2:
             if index_ngchoi <= len(self.ds_nguoichoi):
-                self.ds_nguoichoi.pop(index_ngchoi)
+                del self.ds_nguoichoi[index_ngchoi-1]
                 print ("Xóa thành công")
             else:
                 print('Không tìm thấy người chơi!')
@@ -86,28 +87,59 @@ class Game:
         for j in range (0,3):
             for i in self.ds_nguoichoi:
                 i.add_card(self.deck.deal_card()) 
+        print("-----!----")        
         print("Chia xong rồi bạn nhé")        
+        print("-----!----")
         self.playing=True
 
     def flip_card(self):
         '''Lật bài tất cả người chơi, thông báo người chiến thắng'''
-        p=None
+        name_win=None
         for Player in self.ds_nguoichoi:
-                print (Player)
-                Player.flip_card() #Lật bài từng người chơi
-                if p==None:
-                    p=Player
-                else:
-                    if p.point == Player.point:
-                        if Player.biggest_card > p.biggest_card:
-                            p = Player
-                    elif Player.point > p.point:
-                            p = Player
-                print ("Số điểm của", Player.name, "là:", Player.point)
-                print ("Lá bài có giá trị lớn nhất", Player.biggest_card)
-        print(f'Nguoi chien thang:{p.name}')
+            print("-----!----")
+            print ("Người chơi: ",Player)
+            
+            Player.flip_card() 
+            if name_win==None:
+                name_win=Player
+            else:
+                if name_win.point == Player.point:
+                    if Player.biggest_card > name_win.biggest_card:
+                        name_win = Player
+                elif Player.point > name_win.point:
+                        name_win = Player
+            print("-----!----")
+            print ("Số điểm của", Player.name, "là:", Player.point)
+            print ("Lá bài có giá trị lớn nhất", Player.biggest_card)
+            
+        print(f'Bạn chiến thắng là:{name_win.name}')
+        print("-----!----")
         self.playing=False
-        return p
+        rdb= db.games(name_win.name)
+        for Player in self.ds_nguoichoi:
+            card1=""
+            for i in Player.card:
+                card1 += str(i)
+            db.logs(rdb, Player.name,card1,Player.point,Player.biggest_card )
+        
+    def get_last(self):
+        print("-----!----")
+        print("Ván bài vừa chơi:")
+        last_game, players = db.get_last_game()
+        print(last_game['play_at'])
+        print()
+        for p in players:
+            print(f'Bài của {p["player"]}')
+            print(
+                f'Bộ bài: {p["cards"]} Điểm: {p["point"]} Lá bài lớn nhất: {p["biggest_card"]}')
+            print()
+        print(f'Người chơi chiến thắng: {last_game["winner"]}')
+    def get_history(self):
+        total_game, records = db.history()
+        print("-----!----")
+        print(f'Hôm nay đã chơi: {total_game} ván bài')
+        for r in records:
+            print(f'{r["player"]:6} thắng {r["game_won"]} ván')
 
 ##ga=Game()
 ##ga.setup()
