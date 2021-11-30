@@ -43,29 +43,6 @@ def logs(game_id, player, cards, point, biggest_card):
     cnx.commit()
 
 
-# def get_last_game():
-#     '''Lấy thông tin về game gần nhất từ cả 2 bảng games và logs'''
-#     "Lấy thông tin số người chơi, người chiến thắng, số điểm từng người chơi, bộ bài từng người chơi, lá bài lớn nhất của từng người chơi"
-#     "Đếm số người chơi trong lượt "
-    # sql = '''
-    # SELECT * FROM games AS g ORDER BY g.`date_time` DESC
-    # '''
-    # cur = cnx.cursor()
-    # cur.execute(sql)
-    # game = cur.fetchone()
-    # sql = f''' SELECT * FROM logs WHERE route = {game[2]}'''
-    # cur.execute(sql)
-    # players = cur.fetchall()
-    # for i in players:
-    #     print(f"Tên người chơi:{i[1]} Các lá bài:{i[2]} Điểm:{i[3]} Lá bài lón nhất: {i[4]}")
-
- 
-    # sql="SELECT winner,date_time FROM `games` WHERE `route`=(SELECT max(route) FROM `games`)"
-    # cur.execute(sql)
-    # winner = cur.fetchall()
-    # for j in winner:
-    #     print(f"Tên người chiến thắng lượt chơi này là:{j[0]} Thời gian: {j[1]}" )
-
 def get_last_game():
     '''Lấy thông tin về game gần nhất từ cả 2 bảng games và logs'''
     sql = '''

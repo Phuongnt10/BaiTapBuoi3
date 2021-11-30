@@ -1,6 +1,7 @@
 from deck import Deck
 from player import Player
 import os
+import sys
 import db
 class Game:
     '''
@@ -26,7 +27,9 @@ class Game:
                     print("Số lượng người chơi tối thiểu là 2 tối đa là 12")
             except:
                 
-                print ("Dữ liệu không hợp lệ")
+                print ("Dữ liệu không hợp lệ, mời bạn nhập lại")
+                print (">")
+           
         
         for i in range(1,sl_nguoichoi+1):
            nguoichoi=input("Nhập tên người chơi thứ "+ str(i)+": ")
@@ -54,7 +57,7 @@ class Game:
     def add_player(self):
         '''Thêm người chơi mới'''
         print("Nhập SỐ LƯỢNG người chơi mới: ")
-        nguoichoi_moi=int(input())
+        nguoichoi_moi= int (input())
         if (nguoichoi_moi+len(self.ds_nguoichoi))>12:
             print ("Không thêm được người chơi do đã quá số lượng người được chơi")
         else:
@@ -62,8 +65,7 @@ class Game:
                 print ("Nhập tên người chơi thứ", len(self.ds_nguoichoi)+1)
                 n_player= input()
                 self.ds_nguoichoi.append(Player(n_player))
-            print ("Thêm người chơi thành công")
-
+            print ("Thêm người chơi thành công")    
     def remove_player(self):
         '''
         Loại một người chơi
@@ -141,11 +143,3 @@ class Game:
         for r in records:
             print(f'{r["player"]:6} thắng {r["game_won"]} ván')
 
-##ga=Game()
-##ga.setup()
-##ga.guide()
-##ga.list_players()
-##ga.add_player()
-##ga.list_players()
-##ga.remove_player()
-##ga.list_players()
